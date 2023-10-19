@@ -1,0 +1,204 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=604800" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Academia USAC</title>
+
+    <link
+      href="{% static 'images/usac.ico'%}"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+
+    <!-- jQuery -->
+    <script
+      src="{% static 'js/jquery-2.0.0.min.js'%}}"
+      type="text/javascript"
+    ></script>
+
+    <!-- Bootstrap4 files-->
+    <script
+      src="{% static 'js/bootstrap.bundle.min.js' %}"
+      type="text/javascript"
+    ></script>
+    <link
+      href="{% static 'css/bootstrap.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Font awesome 5 -->
+    <link
+      href="{% static 'fonts/fontawesome/css/all.min.css' %}"
+      type="text/css"
+      rel="stylesheet"
+    />
+
+    <!-- custom style -->
+    <link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css" />
+    <link
+      href="{% static 'css/responsive.css' %}"
+      rel="stylesheet"
+      media="only screen and (max-width: 1200px)"
+    />
+
+    <!-- custom javascript -->
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+      /// some script
+
+      // jquery ready start
+      $(document).ready(function () {
+        // jQuery code
+      });
+      // jquery end
+    </script>
+
+    <style>
+      .intro-banner-wrap{
+          position: relative;
+          left: 150px;
+      }
+      {% comment %} Tamaño y ubicacion del menu navegador {% endcomment %}
+      .nav-link{
+          color: #fff;
+          font-size: 20px;
+          padding-top: 1.5rem;
+      }
+      {% comment %} letrero bienvenido {% endcomment %}
+      .navbar .bienv {
+          position: relative;
+          left: 45rem;
+          bottom: 25px;
+      }
+      {% comment %} Registrar y login {% endcomment %}
+      .navbar .log{
+          position: relative;
+          left: 45rem;
+      }
+      .navbar .reg{
+          position: relative;
+          left: 30rem;
+      }
+    </style>
+  </head>
+  
+  <header>
+    <nav class="navbar" style="background-color: #04264d">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class= "bienv">
+              <small class="title text-muted">Cursos</small>
+          </div>
+        <div class="container-fluid">
+          <!--<a class="navbar-brand" href="#">Usac</a> #e3f2fd -->
+          <a href="./" class="brand-wrap">
+            <img class="logo" src="{% static './images/logo_usac.png' %}" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" aria-current="page" href="{% url 'Home' %}">Home</a>
+              <a class="nav-link" href="{% url 'Cursos' %}">Cursos</a>
+              <!--<a class="nav-link" href="{% url 'Login' %}">Blog</a>
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>-->    
+            </div>
+                  <div class= "log">
+                  <a class="nav-link" aria-current="page" href="./signin.html">Login</a>
+                  </div>
+                <!--<span > | </span> -->
+                  <div  class= "reg">
+                  <a class="nav-link" href="./register.html"> Registrar</a>
+                  </div>
+
+            
+                  <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+                    <div class="d-flex justify-content-end mb-3 mb-lg-0">
+                      <a href="./cart.html" class="widget-header pl-3 ml-3">
+                        <div class="icon icon-sm rounded-circle border">
+                          <i class="fa fa-book fa-fw"></i>
+                        </div>
+                        <span class="badge badge-pill badge-danger notify">0</span>
+                      </a>
+                    </div>
+                    <!-- widgets-wrap.// -->
+                  </div>
+
+            
+          </div>
+        </div>
+      </nav>
+    </nav>
+  </header>
+
+<!-- ========================= SECTION PAGETOP ========================= -->
+	<section class="section-pagetop bg">
+		<div class="container">
+			<h2 class="title-page">Nuestros Cursos</h2>
+
+		</div> <!-- container //  -->
+	</section>
+
+  
+  <!-- ========================= SECTION  ========================= -->
+  
+</section class="section-content padding-y">
+  <div class="container">
+
+    <header class="border-bottom mb-4 pb-3">
+      <div class="form-inline">
+        <span class="mr-md-auto"><b>{{curso_count}} Cursos</b></span>
+      </div>
+    </header><!-- sect-heading -->
+
+  <!-- sect-heading -->    
+    <div class="row">
+
+      {% for curso in cursos %}
+      <div class="col-md-4">
+        <figure class="card card-product-grid">
+          <div class="img-wrap">
+
+            <img src="{{curso.cat_image.url}}">
+
+          </div> <!-- img-wrap.// -->
+          <figcaption class="info-wrap">
+            <div class="fix-height">
+              <a href="./product-detail.html" class="title" style = "text-align: center;">{{curso.nombre}} </a>
+              <div class="price-wrap mt-2">
+                <span class="price">${{curso.costo}}</span>
+              </div> <!-- price-wrap.// -->
+            </div>
+            <a href="#" class="btn btn-block btn-success">Añadir Curso </a>
+          </figcaption>
+        </figure>
+      </div> <!-- col.// -->
+      {% endfor %}
+
+    </div> <!-- row end.// -->
+
+    </div><!-- container // -->
+</section>
+  <!-- ========================= SECTION  END// ========================= -->
+
+  {%include 'includes/footer.html'%}
+</html>

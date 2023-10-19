@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}	
+<main class="contenedor sombra">
+    <h2>Contactos</h2>
+	<section class="formulario">
+	  <form>
+		<fieldset>
+		  <legend>Contactame llenando los campos siguientes</legend>
+		  <div class="contenedor_campos">
+			<div class="campo">
+			  <label>Nombre</label>
+			  <input class="input-text" type="text" placeholder="Nombre" />
+			</div>
+			<div class="campo">
+			  <label for="">Telefono</label>
+			  <input class="input-text" type="tel" placeholder="Telefono" />
+			</div>
+
+			<div class="campo">
+			  <label for="">Correo</label>
+			  <input class="input-text" type="email" placeholder="Tu Email" />
+			</div>
+
+			<div class="campo">
+			  <label for="">Mensaje</label>
+			  <textarea class="input-text w-100"></textarea>
+			</div>
+		  </div>
+		  <!--contenedor_campos-->
+		  <div class="alinear_derecha flex">
+			<input class="boton w-100" type="submit" value="Enviar" />
+		  </div>
+		</fieldset>
+	  </form>
+	</section>
+</main>
+
+{%endblock content%}
