@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Curso
 
-def cursos(request):
+def Cursos(request):
     #Traer todos los cursos que esten activos
     cursos = Curso.objects.all().filter(is_available=True)
     curso_count=cursos.count()
@@ -11,4 +11,4 @@ def cursos(request):
         'curso_count':curso_count,
     }
                                 #indicamos que el context se envie a la pagina
-    return render(request,'CursosEstudiante.html',context)
+    return render(request,'cursos/CursosEstudiante.html',context)
