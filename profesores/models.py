@@ -1,12 +1,14 @@
 from django.db import models
-from django.db.models import CheckConstraint, Q
+from categorias.models import Categorias
+
 
 class Profesor(models.Model):
     nombre = models.CharField(max_length=50)
     apellido=models.CharField(max_length=50)
     dpi=models.IntegerField(help_text="Enter a positive integer.",unique=True)
     especialidad = models.CharField(max_length=50, blank=True)
-    category = models.CharField(max_length=200,blank=True)
+    category = models.ForeignKey(Categorias,on_delete=models.SET_NULL,null=True)
+    #category = models.CharField(max_length=200,blank=True)
 
     class Meta:
         verbose_name='Profesor'

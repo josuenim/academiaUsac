@@ -1,5 +1,6 @@
 from django.db import models
 from profesores.models import Profesor
+from categorias.models import Categorias
 # Create your models here.
 class Curso(models.Model):
     nombre = models.CharField(max_length=50)
@@ -12,10 +13,10 @@ class Curso(models.Model):
     descripcion = models.TextField(blank=True)
     is_available= models.BooleanField(default=True)
     creat_date=models.DateTimeField(auto_now_add=True)
-    category = models.CharField(max_length=200,blank=True)
-    
-    ##ForeignKey##
+    #category = models.CharField(max_length=200,blank=True)
+    ##ForeignKey#
     profesor = models.ForeignKey(Profesor, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Categorias,on_delete=models.SET_NULL,null=True)
     ##
     #modified_date=models.DateTimeField(auto_now=True)
     class Meta:
