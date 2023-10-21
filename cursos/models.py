@@ -1,6 +1,7 @@
 from django.db import models
 from profesores.models import Profesor
 from categorias.models import Categorias
+from django.urls import reverse
 # Create your models here.
 class Curso(models.Model):
     nombre = models.CharField(max_length=50)
@@ -13,7 +14,6 @@ class Curso(models.Model):
     descripcion = models.TextField(blank=True)
     is_available= models.BooleanField(default=True)
     creat_date=models.DateTimeField(auto_now_add=True)
-    #category = models.CharField(max_length=200,blank=True)
     ##ForeignKey#
     profesor = models.ForeignKey(Profesor, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(Categorias,on_delete=models.SET_NULL,null=True)
@@ -22,6 +22,11 @@ class Curso(models.Model):
     class Meta:
         verbose_name='Curso'
         verbose_name_plural = 'Cursos'
+    #Manejo de url para los productos de mi catalogo cursos
+    def get_url(self):
+        #le pasamos a curso_detail lo siguientes argumentos 
+        return reverse('curso_detail',args=[self.category.category_slug,self.slug])
+
     #La data va a ser visible dentro del modulo de administracion de django
     #la data con valor representativo
     def __str__(self):

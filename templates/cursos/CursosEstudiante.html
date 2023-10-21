@@ -101,7 +101,7 @@
         </div>
         <div class="container-fluid">
           <!--<a class="navbar-brand" href="#">Usac</a> #e3f2fd -->
-          <a href="./" class="brand-wrap">
+          <a href="{% url 'Home' %}" class="brand-wrap">
             <img class="logo" src="{% static './images/logo_usac.png' %}" />
           </a>
           <button
@@ -230,7 +230,7 @@
                 <figcaption class="info-wrap">
                   <div class="fix-height">
                     <a
-                      href="./product-detail.html"
+                      href="{{curso.get_url}}"
                       class="title"
                       style="text-align: center"
                       >{{curso.nombre}}
