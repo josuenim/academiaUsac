@@ -8,7 +8,6 @@ class Profesor(models.Model):
     dpi=models.IntegerField(help_text="Enter a positive integer.",unique=True)
     especialidad = models.CharField(max_length=50, blank=True)
     category = models.ForeignKey(Categorias,on_delete=models.SET_NULL,null=True)
-    #category = models.CharField(max_length=200,blank=True)
 
     class Meta:
         verbose_name='Profesor'

@@ -60,9 +60,6 @@
       // jquery ready start
       $(document).ready(function () {
         // jQuery code
-        setTimeout(function(){
-          $('#message').fadeOut('slow')
-        },4000)
       });
       // jquery end
     </script>
@@ -96,10 +93,10 @@
     </style>
   </head>
 
-  {% include "includes/navbar.html" %} 
+  {% include "cursos/includes2/navbar.html" %} 
   
   {% block content %}
   {% endblock content %}
    
-   {%include 'includes/footer.html'%}
+   {%include 'cursos/includes2/footer.html'%}
 </html>

@@ -25,5 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('academiaApp.urls')),
     path('', include('asignaciones.urls')),
-    path('cursos/', include('cursos.urls')),
+    path('curso/', include('cursos.urls')),
+    path('cart/',include('carts.urls')),
+    path('accounts/',include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'cursos',
     'profesores',
     'categorias',
+    'carts',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'categorias.context_processors.menu_links',
+                'carts.context_processors.counter',
             ],
         },
     },
@@ -75,6 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'academia_usac.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.Account'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -82,7 +86,7 @@ WSGI_APPLICATION = 'academia_usac.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'academia',
         'USER':'postgres',
         'PASSWORD':'2512',
         'HOST':'localhost',#localhost
@@ -133,7 +137,14 @@ STATICFILES_DIRS=[
 MEDIA_URL= '/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',#Incorpora estilo de alerta Bootstrap
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+

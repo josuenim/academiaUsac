@@ -25,16 +25,27 @@
           <div class="navbar-nav">
             <a class="nav-link" aria-current="page" href="{% url 'Home' %}">Home</a>
             <a class="nav-link" href="{% url 'Cursos' %}">Cursos</a>
-            <!--<a class="nav-link" href="{% url 'Login' %}">Blog</a>
+            <!--<a class="nav-link" href="{% url 'contacto' %}">Blog</a>
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>-->    
           </div>
+              {%if user.id is None%}
                 <div class= "log">
-                <a class="nav-link" aria-current="page" href="./signin.html">Login</a>
+                <a class="nav-link" aria-current="page" href="{%url 'login' %}">Login</a>
                 </div>
               <!--<span > | </span> -->
                 <div  class= "reg">
-                <a class="nav-link" href="./register.html"> Registrar</a>
+                <a class="nav-link" href="{%url 'eleccion_usuario'%}"> Registrar</a>
                 </div>
+              {%else%}
+              <div class= "log">
+                <a class="nav-link" aria-current="page" href="{%url 'login'%}">Cerrar Sesion</a>
+                </div>
+              <!--<span > | </span> -->
+                <div  class= "reg">
+                <a class="nav-link" href="">Dashboard</a>
+                </div>
+
+              {% endif %}
           
         </div>
       </div>

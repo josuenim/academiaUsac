@@ -31,3 +31,8 @@ class Curso(models.Model):
     #la data con valor representativo
     def __str__(self):
         return self.nombre
+    
+# modelo para tallas y colores    
+#class Variation(models.Model):
+    #curso = models.foreing(Product, on_delete=CASCADE)
+    

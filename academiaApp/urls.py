@@ -3,5 +3,5 @@ from academiaApp import views
 
 urlpatterns = [
     path('', views.home, name = "Home"),
-    path('login', views.login, name = "Login"),
+    path('contacto/', views.contacto, name = "contacto"),
 ]
