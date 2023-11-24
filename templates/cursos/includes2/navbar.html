@@ -30,23 +30,36 @@
           <!--<a class="nav-link" href="{% url 'contacto' %}">Blog</a> 
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
         </div>
+        {%if user.id is None%}
         <div class="log">
-          <a class="nav-link" aria-current="page" href="{%url 'login' %}">Login</a>
+          <a class="nav-link" aria-current="page" href="{%url 'login' %}"
+            >Login</a
+          >
         </div>
         <!--<span > | </span> -->
         <div class="reg">
-          <a class="nav-link" href="{%url 'eleccion_usuario' %}"> Registrar</a>
+          <a class="nav-link" href="{%url 'eleccion_usuario'%}"> Registrar</a>
         </div>
+        {%else%}
+        <div class="log">
+          <a class="nav-link" aria-current="page" href="{%url 'logout'%}"
+            >Cerrar Sesion</a
+          >
+        </div>
+        <!--<span > | </span> -->
+        <div class="reg">
+          <a class="nav-link" href="">Dashboard</a>
+        </div>
+
+        {% endif %}
       </div>
     </nav>
-    
-      <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
-        <i class="fa fa-shopping-cart"></i>
-        <span class="badge badge-pill badge-danger notify">{{cart_count}}</span>
-      </a>
-    
+
+    <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
+      <i class="fa fa-shopping-cart"></i>
+      <span class="badge badge-pill badge-danger notify">{{cart_count}}</span>
+    </a>
   </nav>
 </header>
 
 <!-- Aquí irá el icono de compras -->
-

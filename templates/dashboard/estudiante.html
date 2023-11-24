@@ -1,0 +1,85 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+
+    <div class="container">
+        <div class="row">
+        <aside class="col-md-3">
+            <!--   SIDEBAR   -->
+            <ul class="list-group">
+                <a class="list-group-item active" href="#"> Categoria </a>
+            </ul>
+            <br>
+            <a class="btn btn-light btn-block" href="{%url 'logout'%}"> <i class="fa fa-power-off"></i> <span class="text">Salir de sesion</span> </a> 
+            <!--   SIDEBAR .//END   -->
+        </aside>
+        <main class="col-md-9">
+            <article class="card">
+            <header class="card-header">
+                <strong class="d-inline-block mr-3">usuario</strong>
+                <span></span>
+            </header>
+            <div class="card-body">
+                <div class="row"> 
+                    <div class="col-md-8">
+                        <h6 class="text-muted"></h6>
+                        <p>Estudiante<br>  
+                         </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="text-muted">Activo</h6>
+                    </div>
+                </div> <!-- row.// -->
+            </div> <!-- card-body .// -->
+            <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <td width="65">
+                        <img src="../images/items/1.jpg" class="img-xs border">
+                    </td>
+                    <td> 
+                        <p class="title mb-0">Biologia </p>
+                        <var class="price text-muted">Horario</var>
+                    </td>
+                    <td> x <br> x</td>
+                    <td width="250"> <a href="#" class="btn btn-outline-primary">Clase</a> <a href="#" class="btn btn-light"> Detalles </a> </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../images/items/2.jpg" class="img-xs border">
+                    </td>
+                    <td> 
+                        <p class="title mb-0">Medicina General </p>
+                        <var class="price text-muted">Horario</var>
+                    </td>
+                    <td> x <br> x </td>
+                    <td> <a href="#" class="btn btn-outline-primary">clase</a> <a href="#" class="btn btn-light"> Detalles </a> </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../images/items/3.jpg" class="img-xs border">
+                    </td>
+                    <td> 
+                        <p class="title mb-0"> Histologia</p>
+                        <var class="price text-muted">Horario</var>
+                    </td>
+                    <td> x <br> x </td>
+                    <td> <a href="#" class="btn btn-outline-primary">clase</a> <a href="#" class="btn btn-light"> Detalles </a> </td>
+                </tr>
+            </table>
+            </div> <!-- table-responsive .end// -->
+            </article> <!-- order-group.// --> 
+        </main>
+    </div> <!-- row.// -->
+    </div>
+    
+    
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+
+{% endblock content %}

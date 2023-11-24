@@ -16,6 +16,8 @@ class CartItem(models.Model):
     cart=models.ForeignKey(Cart,on_delete=models.CASCADE)
     quantity=models.IntegerField()
     is_active=models.BooleanField(default=True)
+    nota = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+
 
     def sub_total(self):
         return self.curso.costo * self.quantity

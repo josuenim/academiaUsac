@@ -8,3 +8,4 @@ class ProfesoresAdmin(admin.ModelAdmin):
 
 admin.site.register(Profesor,ProfesoresAdmin)
 # Register your models here.
+    

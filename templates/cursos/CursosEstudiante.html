@@ -143,9 +143,15 @@
               >
             </div>
             <!--<span > | </span> -->
+            {% if user.is_catedratico is True %}
             <div class="reg">
-              <a class="nav-link" href="">Dashboard</a>
+              <a class="nav-link" href="{%url 'pagina_catedratico' %}">Dashboard</a>
             </div>
+            {% elif user.is_account is True %}
+            <div class="reg">
+              <a class="nav-link" href="{%url 'pagina_estudiante' %}">Dashboard</a>
+            </div>
+            {% endif %}
 
             {% endif %}
 
@@ -252,11 +258,22 @@
                     </div>
                     <!-- price-wrap.// -->
                   </div>
+                  {%if user.id is None%}
+                  <a
+                    href="{% url 'login' %}"
+                    class="btn btn-block btn-success"
+                    >Añadir Curso
+                  </a>
+                  {%else%}
+
                   <a
                     href="{% url 'add_cart' curso.id%}"
                     class="btn btn-block btn-success"
                     >Añadir Curso
                   </a>
+
+
+                  {% endif %}
                 </figcaption>
               </figure>
             </div>

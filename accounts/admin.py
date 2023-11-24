@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Account
+from .models import Account, Catedratico
 # Register your models here.
 
 class AccountAdmin(UserAdmin):
@@ -8,10 +8,16 @@ class AccountAdmin(UserAdmin):
     list_display_link=('email','first_name','last_name')
     readonly_fields = ('last_login','date_joined')
     ordering= ('-date_joined',)
+    list_filter=("is_account","is_catedratico","is_staff")
 
-    filter_horizontal=()
-    list_filter=() 
+    filter_horizontal=() 
     fieldsets=() 
+
+class CatedraticoAdmin(admin.ModelAdmin):
+    list_display=("nombre","apellido")
+
+#admin.site.register(Catedratico,CatedraticoAdmin)
+# Register your models here.
 
 
 admin.site.register(Account,AccountAdmin)

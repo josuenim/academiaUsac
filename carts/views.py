@@ -5,7 +5,6 @@ from django.core.exceptions import ObjectDoesNotExist
 #Funcion para realizar la busqueda de la sesion del usuario actual dentro del browser
 # _cart.. guion bajo indicanod que es una funcion privada
 
-
 #Funcion que me permite buscar en mi carrito de compras
 #Utilizando como parametro el objeto request.   
 def _get_card_id(request):
@@ -13,8 +12,9 @@ def _get_card_id(request):
     if not cart:
         cart=request.session.create()
     return cart
-
-
+#La función _get_card_id solicita un objeto request porque necesita acceder a la sesión de Django 
+# para obtener o crear un identificador único para el carrito de compras asociado a la sesión del usuario.
+ 
 def add_cart(request, curso_id):
     #condicion que busque por el id
     curso = Curso.objects.get(id=curso_id)

@@ -3,6 +3,16 @@
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-conten padding-y" style="min-height:84vh">
     
+
+    {% if request.GET.command == 'verification'%}
+        <div class = "container mx-auto alert alert-info" role ="alert" sytle = "max-width=380px; margin-top= 100px;" >
+            Gracias por registrate  en el Portal Academia USAC, te hemos enviado un emial para confirmar tu cuenta [{{request.GET.email}}]
+            <br><br>
+            Si ya verificaste tu cuenta, puede ir al login <a href = "{%url 'login'%}"> Login </a>
+        </div>
+    {% else %}
+
+
     <!-- ============================ COMPONENT LOGIN   ================================= -->
         <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
             {%include 'includes/alerts.html'%}
@@ -29,11 +39,11 @@
           </div> <!-- card-body.// -->
         </div> <!-- card .// -->
     
-         <p class="text-center mt-4">No tienes una cuenta? <a href="{%url 'register'%}">Registrate</a></p>
+         <p class="text-center mt-4">No tienes una cuenta? <a href="{%url 'eleccion_usuario'%}">Registrate</a></p>
          <br><br>
     <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
     
-    
+    {% endif %}
     </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
 

@@ -1,4 +1,5 @@
 from django.db import models
+from cursos.models import Curso
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 # Create your models here.
 class MyAccountManager(BaseUserManager):
@@ -7,6 +8,7 @@ class MyAccountManager(BaseUserManager):
             raise ValueError('El usuario debe tener un email')
         if not username:
             raise ValueError('El usuario debe tener un username')
+        #self.model, que generalmente se utiliza cuando el administrador se instancia
         user=self.model(
             email=self.normalize_email(email),
             username = username,
@@ -17,6 +19,7 @@ class MyAccountManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
+    
     def create_superuser(self, first_name, last_name, email, username,password):
         user=self.create_user(
             email = self.normalize_email(email),
@@ -37,10 +40,12 @@ class Account(AbstractBaseUser):
     last_name = models.CharField(max_length=50)
     username = models.CharField(max_length=50,unique=True)
     email = models.CharField(max_length=100,unique=True)
-    phone_number= models.CharField(max_length=50)
+    phone_number= models.CharField(max_length=50,blank=True)
     dpi = models.CharField(max_length=15,null=True)
     #formato de fecha es "YYYY-MM-DD"
     fecha_de_nacimiento = models.DateField(null=True, blank=True)
+    is_account =models.BooleanField(default=False)
+    is_catedratico =models.BooleanField(default=False)
 
 
     #Campos Atributos de django
@@ -66,4 +71,42 @@ class Account(AbstractBaseUser):
         return True
     
 
+    
+class CatedraticoManager(BaseUserManager):
+    def create_user(self, nombre, apellido, email, username, dpi, password=None):
+        if not email:
+            raise ValueError('El catedrático debe tener un email')
+        if not username:
+            raise ValueError('El catedrático debe tener un username')
+        user = self.model(
+            email=self.normalize_email(email),
+            username=username,
+            nombre=nombre,
+            apellido=apellido,
+            dpi=dpi,
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+
+class Catedratico(AbstractBaseUser):
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    username = models.CharField(max_length=50, blank=True)
+    email = models.CharField(max_length=100, unique=True)
+    dpi = models.CharField(max_length=15, unique=True)
+    curso = models.ForeignKey(Curso, on_delete=models.SET_NULL, null= True)
+
+    is_account =models.BooleanField(default=False)
+    is_catedratico =models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
+
+    objects = CatedraticoManager() 
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'nombre', 'apellido', 'dpi']
+
+    def __str__(self):
+        return f'{self.nombre} {self.apellido}'
 

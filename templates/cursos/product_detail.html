@@ -34,11 +34,12 @@
             {% if single_curso.cupo <= 0%}
               <h4>No hay Cupos disponibles</h4>
             {%else%}
-
-            <button type="submit" class="btn btn-primary">
-              <span class="text">Agregar al carrito</span>
-              <i class="fas fa-shopping-cart"></i>
-            </button>
+                  {%if in_cart %}
+                  <a href= "#" class="btn btn-success"><span class="text">Curso Agregado</span><i class="fas fa-check"></i></a>
+                  <a href= "{% url 'cart' %}" class="btn btn-outline-primary"><span class="text">Ver cursos agregados</span><i class="fas fa-eye"></i></a>
+                  {%else%}
+                  <a href= "{%url 'add_cart' single_curso.id%}" class="btn btn-primary"><span class="text">Agregar Curso</span><i class="fas fa-shopping-cart"></i></a>
+                  {% endif %}
             {% endif %}
           </article>
           <!-- product-info-aside .// -->
