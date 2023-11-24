@@ -46,7 +46,7 @@ class RegistrationForm(forms.ModelForm):
                 raise forms.ValidationError("La contraseña debe contener al menos 1 letra mayúscula.")
             if not re.search(r'[!@#$%^&*]', password):
                 raise forms.ValidationError("La contraseña debe contener al menos 1 símbolo (!@#$%^&*).")
-
+    
 
 class RegistrationFormCatedratico(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
